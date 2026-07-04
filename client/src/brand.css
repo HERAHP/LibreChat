@@ -1,0 +1,70 @@
+/* ============================================================
+   IAOBM Sidekick — prototype LibreChat colour overrides
+   Keep this at the very bottom of client/src/style.css
+   ============================================================ */
+
+:root {
+  --iaobm-purple-300: #8375e0;
+  --iaobm-purple-400: #6a5ad6;
+  --iaobm-purple-500: #4732c2;
+  --iaobm-purple-600: #3e2bac;
+  --iaobm-purple-700: #34248f;
+
+  --iaobm-orange-400: #f2794a;
+  --iaobm-orange-500: #eb5d1f;
+  --iaobm-orange-600: #ce4e14;
+
+  --iaobm-blue-400: #38abe8;
+  --iaobm-blue-500: #0091dd;
+  --iaobm-blue-600: #0077b8;
+}
+
+/* Light mode: LibreChat uses html, not .light */
+html {
+  --brand-purple: var(--iaobm-purple-500);
+
+  --surface-submit: var(--iaobm-purple-500);
+  --surface-submit-hover: var(--iaobm-purple-600);
+
+  --text-warning: var(--iaobm-orange-500);
+  --ring-primary: var(--iaobm-purple-500);
+
+  --surface-hover: #f1effb;
+  --surface-active: #e8e3f8;
+  --surface-active-alt: #c6beee;
+
+  --border-medium: #c6beee;
+  --border-medium-alt: #c6beee;
+
+  /* HSL triplets — do not use hex for these */
+  --primary: 249 59% 48%;
+  --primary-foreground: 0 0% 100%;
+  --ring: 249 59% 48%;
+  --accent: 18 84% 52%;
+  --accent-foreground: 0 0% 100%;
+}
+
+/* Dark mode: LibreChat uses .dark */
+.dark {
+  --brand-purple: var(--iaobm-purple-400);
+
+  --surface-submit: var(--iaobm-purple-400);
+  --surface-submit-hover: var(--iaobm-purple-300);
+
+  --text-warning: var(--iaobm-orange-400);
+  --ring-primary: var(--iaobm-purple-400);
+
+  --surface-hover: #1e1929;
+  --surface-active: #241c3a;
+  --surface-active-alt: #2c2637;
+
+  --border-medium: #3a3350;
+  --border-medium-alt: #3a3350;
+
+  /* HSL triplets — do not use hex for these */
+  --primary: 248 60% 60%;
+  --primary-foreground: 0 0% 100%;
+  --ring: 248 60% 60%;
+  --accent: 17 87% 62%;
+  --accent-foreground: 0 0% 100%;
+}
