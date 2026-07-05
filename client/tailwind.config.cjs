@@ -78,19 +78,18 @@ module.exports = {
           850: '#171717',
           900: '#0d0d0d',
         },
-        green: {
-          50: '#f1f9f7',
-          100: '#def2ed',
-          200: '#a6e5d6',
-          300: '#6dc8b9',
-          400: '#41a79d',
-          500: '#10a37f',
-          550: '#349072',
-          600: '#126e6b',
-          700: '#0a4f53',
-          800: '#06373e',
-          900: '#031f29',
-        },
+	green: {
+ 	  50:  '#F1EFFB',
+	  100: '#E8E3F8',
+  	  200: '#C6BEEE',
+  	  300: '#8375E0',
+  	  400: '#6A5AD6',  // dark-mode accent
+  	  500: '#4732C2',  // primary  (was LibreChat's green-500)
+  	  600: '#3E2BAC',  // hover
+  	  700: '#34248F',  // active
+  	  800: '#2A1D75',
+  	  900: '#1F1657',
+	},
         'brand-purple': 'var(--brand-purple)',
         presentation: 'var(--presentation)',
         'text-primary': 'var(--text-primary)',
