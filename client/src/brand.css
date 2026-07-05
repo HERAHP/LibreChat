@@ -15,41 +15,96 @@
 /* ------------------------------------------------------------
    Brand palette + theme source tokens
    ------------------------------------------------------------ */
-:root {
-  /* Brand core */
-  --brand-purple: #4732c2;
-  --brand-orange: #eb5d1f;
-  --brand-blue: #0091dd;
-  --brand-peach: #ffcdae;
 
+:root {
   /* Purple ramp */
-  --purple-50: #f1effb;
-  --purple-100: #e8e3f8;
-  --purple-200: #c6beee;
-  --purple-300: #8375e0;
-  --purple-400: #6a5ad6;
-  --purple-500: #4732c2;
-  --purple-600: #3e2bac;
-  --purple-700: #34248f;
+  --iaobm-purple-50: #f1effb;
+  --iaobm-purple-100: #e8e3f8;
+  --iaobm-purple-200: #c6beee;
+  --iaobm-purple-300: #8375e0;
+  --iaobm-purple-400: #6a5ad6;
+  --iaobm-purple-500: #4732c2;
+  --iaobm-purple-600: #3e2bac;
+  --iaobm-purple-700: #34248f;
+  --iaobm-purple-800: #2a1d75;
+  --iaobm-purple-900: #1f1657;
+  --iaobm-purple-950: #120d36;
 
   /* Orange ramp */
-  --orange-tint: #fdece3;
-  --orange-400: #f2794a;
-  --orange-500: #eb5d1f;
-  --orange-600: #ce4e14;
-  --orange-700: #a83f10;
+  --iaobm-orange-50: #fff7ed;
+  --iaobm-orange-100: #ffedd5;
+  --iaobm-orange-200: #fed7aa;
+  --iaobm-orange-300: #fdba74;
+  --iaobm-orange-400: #f2794a;
+  --iaobm-orange-500: #eb5d1f;
+  --iaobm-orange-600: #ce4e14;
+  --iaobm-orange-700: #a83f10;
+  --iaobm-orange-800: #7c2d12;
+  --iaobm-orange-900: #431407;
+  --iaobm-orange-950: #2b0b03;
+}
 
-  /* Blue ramp */
-  --blue-300: #5fbeed;
-  --blue-400: #38abe8;
-  --blue-500: #0091dd;
-  --blue-600: #0077b8;
+/* Light mode = orange primary/action palette */
+html {
+  --iaobm-primary-50: var(--iaobm-orange-50);
+  --iaobm-primary-100: var(--iaobm-orange-100);
+  --iaobm-primary-200: var(--iaobm-orange-200);
+  --iaobm-primary-300: var(--iaobm-orange-300);
+  --iaobm-primary-400: var(--iaobm-orange-400);
+  --iaobm-primary-500: var(--iaobm-orange-500);
+  --iaobm-primary-600: var(--iaobm-orange-600);
+  --iaobm-primary-700: var(--iaobm-orange-700);
+  --iaobm-primary-800: var(--iaobm-orange-800);
+  --iaobm-primary-900: var(--iaobm-orange-900);
+  --iaobm-primary-950: var(--iaobm-orange-950);
 
-  /* Peach ramp */
-  --peach-tint: #fff1e8;
-  --peach-200: #ffe0cc;
-  --peach-500: #ffcdae;
+  --brand-purple: var(--iaobm-orange-500);
 
+  --surface-submit: var(--iaobm-orange-500);
+  --surface-submit-hover: var(--iaobm-orange-600);
+
+  --ring-primary: var(--iaobm-orange-500);
+  --text-warning: var(--iaobm-orange-500);
+
+  /* HSL triplets, not hex */
+  --primary: 18 84% 52%;
+  --primary-foreground: 0 0% 100%;
+  --ring: 18 84% 52%;
+  --accent: 18 84% 52%;
+  --accent-foreground: 0 0% 100%;
+}
+
+/* Dark mode = purple primary/action palette */
+.dark {
+  --iaobm-primary-50: var(--iaobm-purple-50);
+  --iaobm-primary-100: var(--iaobm-purple-100);
+  --iaobm-primary-200: var(--iaobm-purple-200);
+  --iaobm-primary-300: var(--iaobm-purple-300);
+  --iaobm-primary-400: var(--iaobm-purple-400);
+  --iaobm-primary-500: var(--iaobm-purple-500);
+  --iaobm-primary-600: var(--iaobm-purple-600);
+  --iaobm-primary-700: var(--iaobm-purple-700);
+  --iaobm-primary-800: var(--iaobm-purple-800);
+  --iaobm-primary-900: var(--iaobm-purple-900);
+  --iaobm-primary-950: var(--iaobm-purple-950);
+
+  --brand-purple: var(--iaobm-purple-400);
+
+  --surface-submit: var(--iaobm-purple-400);
+  --surface-submit-hover: var(--iaobm-purple-300);
+
+  --ring-primary: var(--iaobm-purple-400);
+  --text-warning: var(--iaobm-orange-400);
+
+  /* HSL triplets, not hex */
+  --primary: 248 60% 60%;
+  --primary-foreground: 0 0% 100%;
+  --ring: 248 60% 60%;
+  --accent: 17 87% 62%;
+  --accent-foreground: 0 0% 100%;
+}
+  
+:root {
   /* Status colours */
   --iaobm-success: #1fa971;
   --iaobm-warning: #eb5d1f;

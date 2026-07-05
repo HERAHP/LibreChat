@@ -79,16 +79,17 @@ module.exports = {
           900: '#0d0d0d',
         },
 	green: {
- 	  50:  '#F1EFFB',
-	  100: '#E8E3F8',
-  	  200: '#C6BEEE',
-  	  300: '#8375E0',
-  	  400: '#6A5AD6',  // dark-mode accent
-  	  500: '#4732C2',  // primary  (was LibreChat's green-500)
-  	  600: '#3E2BAC',  // hover
-  	  700: '#34248F',  // active
-  	  800: '#2A1D75',
-  	  900: '#1F1657',
+	  50: 'var(--iaobm-primary-50)',
+	  100: 'var(--iaobm-primary-100)',
+	  200: 'var(--iaobm-primary-200)',
+	  300: 'var(--iaobm-primary-300)',
+	  400: 'var(--iaobm-primary-400)',
+	  500: 'var(--iaobm-primary-500)',
+	  600: 'var(--iaobm-primary-600)',
+	  700: 'var(--iaobm-primary-700)',
+	  800: 'var(--iaobm-primary-800)',
+	  900: 'var(--iaobm-primary-900)',
+	  950: 'var(--iaobm-primary-950)',
 	},
         'brand-purple': 'var(--brand-purple)',
         presentation: 'var(--presentation)',
