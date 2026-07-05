@@ -1,70 +1,856 @@
 /* ============================================================
-   IAOBM Sidekick — prototype LibreChat colour overrides
-   Keep this at the very bottom of client/src/style.css
+   IAOBM Sidekick — LibreChat brand overrides
+   Generated from iaobm-sidekick-theme.css and mapped onto
+   LibreChat's existing style.css selectors/tokens.
+
+   Usage:
+     import '@librechat/client/style.css';
+     import './style.css';
+     import './brand.css';
+
+   Keep this file loaded AFTER style.css. Do not paste it above
+   the original LibreChat theme definitions.
    ============================================================ */
 
+/* ------------------------------------------------------------
+   Brand palette + theme source tokens
+   ------------------------------------------------------------ */
 :root {
-  --iaobm-purple-300: #8375e0;
-  --iaobm-purple-400: #6a5ad6;
-  --iaobm-purple-500: #4732c2;
-  --iaobm-purple-600: #3e2bac;
-  --iaobm-purple-700: #34248f;
+  /* Brand core */
+  --brand-purple: #4732c2;
+  --brand-orange: #eb5d1f;
+  --brand-blue: #0091dd;
+  --brand-peach: #ffcdae;
 
-  --iaobm-orange-400: #f2794a;
-  --iaobm-orange-500: #eb5d1f;
-  --iaobm-orange-600: #ce4e14;
+  /* Purple ramp */
+  --purple-50: #f1effb;
+  --purple-100: #e8e3f8;
+  --purple-200: #c6beee;
+  --purple-300: #8375e0;
+  --purple-400: #6a5ad6;
+  --purple-500: #4732c2;
+  --purple-600: #3e2bac;
+  --purple-700: #34248f;
 
-  --iaobm-blue-400: #38abe8;
-  --iaobm-blue-500: #0091dd;
-  --iaobm-blue-600: #0077b8;
+  /* Orange ramp */
+  --orange-tint: #fdece3;
+  --orange-400: #f2794a;
+  --orange-500: #eb5d1f;
+  --orange-600: #ce4e14;
+  --orange-700: #a83f10;
+
+  /* Blue ramp */
+  --blue-300: #5fbeed;
+  --blue-400: #38abe8;
+  --blue-500: #0091dd;
+  --blue-600: #0077b8;
+
+  /* Peach ramp */
+  --peach-tint: #fff1e8;
+  --peach-200: #ffe0cc;
+  --peach-500: #ffcdae;
+
+  /* Status colours */
+  --iaobm-success: #1fa971;
+  --iaobm-warning: #eb5d1f;
+  --iaobm-danger: #e5484d;
+  --iaobm-danger-hover: #c93f43;
+  --iaobm-info: #0091dd;
+  --iaobm-on-primary: #ffffff;
+
+  /* Light source tokens */
+  --iaobm-light-bg: #ffffff;
+  --iaobm-light-surface: #f6f5fa;
+  --iaobm-light-surface-raised: #ffffff;
+  --iaobm-light-border: #e7e5ef;
+  --iaobm-light-text-primary: #1b1533;
+  --iaobm-light-text-secondary: #5a5470;
+  --iaobm-light-text-muted: #908ba3;
+  --iaobm-light-row-hover: #f1eefb;
+  --iaobm-light-row-selected: #e8e3f8;
+  --iaobm-light-row-selected-text: #34248f;
+  --iaobm-light-bubble-user-bg: #4732c2;
+  --iaobm-light-bubble-user-text: #ffffff;
+  --iaobm-light-bubble-ai-bg: #f1eefb;
+  --iaobm-light-bubble-ai-text: #1b1533;
+  --iaobm-light-primary: #4732c2;
+  --iaobm-light-primary-hover: #3e2bac;
+  --iaobm-light-primary-active: #34248f;
+  --iaobm-light-primary-disabled: #c6beee;
+  --iaobm-light-focus-ring: 0 0 0 3px rgba(71, 50, 194, 0.4);
+  --iaobm-light-accent: #eb5d1f;
+  --iaobm-light-accent-hover: #ce4e14;
+  --iaobm-light-accent-active: #a83f10;
+  --iaobm-light-link: #0091dd;
+  --iaobm-light-link-hover: #0077b8;
+
+  /* Dark source tokens */
+  --iaobm-dark-bg: #0d0b14;
+  --iaobm-dark-surface: #16121f;
+  --iaobm-dark-surface-raised: #1c1726;
+  --iaobm-dark-border: #2c2637;
+  --iaobm-dark-text-primary: #f4f2f9;
+  --iaobm-dark-text-secondary: #b3aec6;
+  --iaobm-dark-text-muted: #7d7791;
+  --iaobm-dark-row-hover: #1e1929;
+  --iaobm-dark-row-selected: #241c3a;
+  --iaobm-dark-row-selected-text: #c9bff2;
+  --iaobm-dark-bubble-user-bg: #6a5ad6;
+  --iaobm-dark-bubble-user-text: #ffffff;
+  --iaobm-dark-bubble-ai-bg: #1c1726;
+  --iaobm-dark-bubble-ai-text: #f4f2f9;
+  --iaobm-dark-primary: #6a5ad6;
+  --iaobm-dark-primary-hover: #8375e0;
+  --iaobm-dark-primary-active: #5a46c8;
+  --iaobm-dark-primary-disabled: #3a3350;
+  --iaobm-dark-focus-ring: 0 0 0 3px rgba(106, 90, 214, 0.45);
+  --iaobm-dark-accent: #f2794a;
+  --iaobm-dark-accent-hover: #f58f66;
+  --iaobm-dark-accent-active: #eb5d1f;
+  --iaobm-dark-link: #38abe8;
+  --iaobm-dark-link-hover: #5fbeed;
+
+  /* Light primitive remap for places in style.css that use the old ramps directly. */
+  --white: #ffffff;
+  --black: #000000;
+  --gray-20: #f6f5fa;
+  --gray-50: #f6f5fa;
+  --gray-100: #f1eefb;
+  --gray-200: #e8e3f8;
+  --gray-300: #c6beee;
+  --gray-400: #908ba3;
+  --gray-500: #5a5470;
+  --gray-600: #34248f;
+  --gray-700: #2d1f7c;
+  --gray-800: #1b1533;
+  --gray-850: #16121f;
+  --gray-900: #0d0b14;
+
+  --green-50: #f0fbf7;
+  --green-100: #d9f4e9;
+  --green-200: #aee8d1;
+  --green-300: #75d7b1;
+  --green-400: #43c28f;
+  --green-500: #1fa971;
+  --green-600: #18895d;
+  --green-700: #146e4d;
+  --green-800: #11583f;
+  --green-900: #0e4533;
+  --green-950: #08291f;
+
+  --red-50: #fff1f2;
+  --red-100: #ffe0e2;
+  --red-200: #ffc7cb;
+  --red-300: #ffa0a6;
+  --red-400: #ff737b;
+  --red-500: #e5484d;
+  --red-600: #c93f43;
+  --red-700: #a93539;
+  --red-800: #872a2e;
+  --red-900: #641f22;
+  --red-950: #3a1013;
+
+  --amber-50: #fff7ed;
+  --amber-100: #fdece3;
+  --amber-200: #ffcdae;
+  --amber-300: #f58f66;
+  --amber-400: #f2794a;
+  --amber-500: #eb5d1f;
+  --amber-600: #ce4e14;
+  --amber-700: #a83f10;
+  --amber-800: #80300c;
+  --amber-900: #5c2208;
+  --amber-950: #341204;
 }
 
-/* Light mode: LibreChat uses html, not .light */
+/* ------------------------------------------------------------
+   Light mode — LibreChat's light theme is the html selector.
+   Do not use .light unless the app explicitly adds that class.
+   ------------------------------------------------------------ */
 html {
-  --brand-purple: var(--iaobm-purple-500);
+  /* Current theme aliases used by class overrides below. */
+  --iaobm-bg: var(--iaobm-light-bg);
+  --iaobm-surface: var(--iaobm-light-surface);
+  --iaobm-surface-raised: var(--iaobm-light-surface-raised);
+  --iaobm-border: var(--iaobm-light-border);
+  --iaobm-text-primary: var(--iaobm-light-text-primary);
+  --iaobm-text-secondary: var(--iaobm-light-text-secondary);
+  --iaobm-text-muted: var(--iaobm-light-text-muted);
+  --iaobm-row-hover: var(--iaobm-light-row-hover);
+  --iaobm-row-selected: var(--iaobm-light-row-selected);
+  --iaobm-row-selected-text: var(--iaobm-light-row-selected-text);
+  --iaobm-bubble-user-bg: var(--iaobm-light-bubble-user-bg);
+  --iaobm-bubble-user-text: var(--iaobm-light-bubble-user-text);
+  --iaobm-bubble-ai-bg: var(--iaobm-light-bubble-ai-bg);
+  --iaobm-bubble-ai-text: var(--iaobm-light-bubble-ai-text);
+  --iaobm-primary: var(--iaobm-light-primary);
+  --iaobm-primary-hover: var(--iaobm-light-primary-hover);
+  --iaobm-primary-active: var(--iaobm-light-primary-active);
+  --iaobm-primary-disabled: var(--iaobm-light-primary-disabled);
+  --iaobm-focus-ring: var(--iaobm-light-focus-ring);
+  --iaobm-accent: var(--iaobm-light-accent);
+  --iaobm-accent-hover: var(--iaobm-light-accent-hover);
+  --iaobm-accent-active: var(--iaobm-light-accent-active);
+  --iaobm-link: var(--iaobm-light-link);
+  --iaobm-link-hover: var(--iaobm-light-link-hover);
 
-  --surface-submit: var(--iaobm-purple-500);
-  --surface-submit-hover: var(--iaobm-purple-600);
+  /* LibreChat semantic tokens. */
+  --brand-purple: var(--iaobm-primary);
+  --presentation: var(--iaobm-bg);
+  --text-primary: var(--iaobm-text-primary);
+  --text-secondary: var(--iaobm-text-secondary);
+  --text-secondary-alt: var(--iaobm-text-secondary);
+  --text-tertiary: var(--iaobm-text-muted);
+  --text-warning: var(--iaobm-warning);
+  --text-destructive: var(--iaobm-danger);
+  --ring-primary: var(--iaobm-primary);
 
-  --text-warning: var(--iaobm-orange-500);
-  --ring-primary: var(--iaobm-purple-500);
+  --header-primary: var(--iaobm-surface-raised);
+  --header-hover: var(--iaobm-row-hover);
+  --header-button-hover: var(--iaobm-row-hover);
 
-  --surface-hover: #f1effb;
-  --surface-active: #e8e3f8;
-  --surface-active-alt: #c6beee;
+  --surface-active: var(--iaobm-row-selected);
+  --surface-active-alt: var(--purple-200);
+  --surface-hover: var(--iaobm-row-hover);
+  --surface-hover-alt: var(--iaobm-row-selected);
+  --surface-primary: var(--iaobm-bg);
+  --surface-primary-alt: var(--iaobm-surface);
+  --surface-primary-contrast: var(--iaobm-row-selected);
+  --surface-secondary: var(--iaobm-surface);
+  --surface-secondary-alt: var(--iaobm-row-selected);
+  --surface-tertiary: var(--iaobm-row-hover);
+  --surface-tertiary-alt: var(--iaobm-surface-raised);
+  --surface-dialog: var(--iaobm-surface-raised);
+  --surface-submit: var(--iaobm-primary);
+  --surface-submit-hover: var(--iaobm-primary-hover);
+  --surface-destructive: var(--iaobm-danger);
+  --surface-destructive-hover: var(--iaobm-danger-hover);
+  --surface-chat: var(--iaobm-bubble-ai-bg);
 
-  --border-medium: #c6beee;
-  --border-medium-alt: #c6beee;
+  --border-light: var(--iaobm-border);
+  --border-medium-alt: var(--purple-200);
+  --border-medium: var(--purple-200);
+  --border-heavy: var(--iaobm-text-muted);
+  --border-xheavy: var(--iaobm-text-secondary);
+  --border-destructive: var(--iaobm-danger);
 
-  /* HSL triplets — do not use hex for these */
+  /* Tailwind/shadcn-style variables must be HSL triplets, not hex. */
+  --background: 0 0% 100%;
+  --foreground: 252 42% 14%;
+  --card: 0 0% 100%;
+  --card-foreground: 252 42% 14%;
   --primary: 249 59% 48%;
   --primary-foreground: 0 0% 100%;
-  --ring: 249 59% 48%;
+  --secondary: 252 33% 97%;
+  --secondary-foreground: 252 42% 14%;
+  --muted: 252 33% 97%;
+  --muted-foreground: 253 14% 38%;
   --accent: 18 84% 52%;
   --accent-foreground: 0 0% 100%;
+  --destructive: 358 75% 59%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 252 24% 92%;
+  --input: 252 24% 92%;
+  --ring: 249 59% 48%;
+  --chart-1: 249 59% 48%;
+  --chart-2: 201 100% 43%;
+  --chart-3: 18 84% 52%;
+  --chart-4: 156 69% 39%;
+  --chart-5: 23 100% 84%;
+  --switch-unchecked: 253 12% 59%;
 }
 
-/* Dark mode: LibreChat uses .dark */
+/* ------------------------------------------------------------
+   Dark mode — LibreChat uses .dark, not [data-theme="dark"].
+   ------------------------------------------------------------ */
 .dark {
-  --brand-purple: var(--iaobm-purple-400);
+  /* Current theme aliases used by class overrides below. */
+  --iaobm-bg: var(--iaobm-dark-bg);
+  --iaobm-surface: var(--iaobm-dark-surface);
+  --iaobm-surface-raised: var(--iaobm-dark-surface-raised);
+  --iaobm-border: var(--iaobm-dark-border);
+  --iaobm-text-primary: var(--iaobm-dark-text-primary);
+  --iaobm-text-secondary: var(--iaobm-dark-text-secondary);
+  --iaobm-text-muted: var(--iaobm-dark-text-muted);
+  --iaobm-row-hover: var(--iaobm-dark-row-hover);
+  --iaobm-row-selected: var(--iaobm-dark-row-selected);
+  --iaobm-row-selected-text: var(--iaobm-dark-row-selected-text);
+  --iaobm-bubble-user-bg: var(--iaobm-dark-bubble-user-bg);
+  --iaobm-bubble-user-text: var(--iaobm-dark-bubble-user-text);
+  --iaobm-bubble-ai-bg: var(--iaobm-dark-bubble-ai-bg);
+  --iaobm-bubble-ai-text: var(--iaobm-dark-bubble-ai-text);
+  --iaobm-primary: var(--iaobm-dark-primary);
+  --iaobm-primary-hover: var(--iaobm-dark-primary-hover);
+  --iaobm-primary-active: var(--iaobm-dark-primary-active);
+  --iaobm-primary-disabled: var(--iaobm-dark-primary-disabled);
+  --iaobm-focus-ring: var(--iaobm-dark-focus-ring);
+  --iaobm-accent: var(--iaobm-dark-accent);
+  --iaobm-accent-hover: var(--iaobm-dark-accent-hover);
+  --iaobm-accent-active: var(--iaobm-dark-accent-active);
+  --iaobm-link: var(--iaobm-dark-link);
+  --iaobm-link-hover: var(--iaobm-dark-link-hover);
 
-  --surface-submit: var(--iaobm-purple-400);
-  --surface-submit-hover: var(--iaobm-purple-300);
+  /* Dark primitive remap for direct var(--gray-*) usages. */
+  --gray-20: #16121f;
+  --gray-50: #16121f;
+  --gray-100: #1c1726;
+  --gray-200: #241c3a;
+  --gray-300: #b3aec6;
+  --gray-400: #7d7791;
+  --gray-500: #7d7791;
+  --gray-600: #3a3350;
+  --gray-700: #241c3a;
+  --gray-800: #16121f;
+  --gray-850: #1c1726;
+  --gray-900: #0d0b14;
 
-  --text-warning: var(--iaobm-orange-400);
-  --ring-primary: var(--iaobm-purple-400);
+  /* LibreChat semantic tokens. */
+  --brand-purple: var(--iaobm-primary);
+  --presentation: var(--iaobm-surface);
+  --text-primary: var(--iaobm-text-primary);
+  --text-secondary: var(--iaobm-text-secondary);
+  --text-secondary-alt: var(--iaobm-text-secondary);
+  --text-tertiary: var(--iaobm-text-muted);
+  --text-warning: var(--iaobm-accent);
+  --text-destructive: #ff6b70;
+  --ring-primary: var(--iaobm-primary);
 
-  --surface-hover: #1e1929;
-  --surface-active: #241c3a;
-  --surface-active-alt: #2c2637;
+  --header-primary: var(--iaobm-surface);
+  --header-hover: var(--iaobm-row-hover);
+  --header-button-hover: var(--iaobm-row-selected);
 
-  --border-medium: #3a3350;
-  --border-medium-alt: #3a3350;
+  --surface-active: var(--iaobm-row-selected);
+  --surface-active-alt: var(--iaobm-primary-disabled);
+  --surface-hover: var(--iaobm-row-hover);
+  --surface-hover-alt: var(--iaobm-row-selected);
+  --surface-primary: var(--iaobm-bg);
+  --surface-primary-alt: var(--iaobm-surface);
+  --surface-primary-contrast: var(--iaobm-surface-raised);
+  --surface-secondary: var(--iaobm-surface);
+  --surface-secondary-alt: var(--iaobm-surface-raised);
+  --surface-tertiary: var(--iaobm-row-selected);
+  --surface-tertiary-alt: var(--iaobm-primary-disabled);
+  --surface-dialog: var(--iaobm-surface-raised);
+  --surface-submit: var(--iaobm-primary);
+  --surface-submit-hover: var(--iaobm-primary-hover);
+  --surface-destructive: #991b1b;
+  --surface-destructive-hover: #7f1d1d;
+  --surface-chat: var(--iaobm-bubble-ai-bg);
 
-  /* HSL triplets — do not use hex for these */
+  --border-light: var(--iaobm-border);
+  --border-medium-alt: var(--iaobm-primary-disabled);
+  --border-medium: var(--iaobm-primary-disabled);
+  --border-heavy: var(--iaobm-text-muted);
+  --border-xheavy: var(--iaobm-text-secondary);
+  --border-destructive: #ff6b70;
+
+  /* Tailwind/shadcn-style variables must be HSL triplets, not hex. */
+  --background: 253 29% 6%;
+  --foreground: 257 37% 96%;
+  --card: 260 25% 12%;
+  --card-foreground: 257 37% 96%;
   --primary: 248 60% 60%;
   --primary-foreground: 0 0% 100%;
-  --ring: 248 60% 60%;
+  --secondary: 258 27% 10%;
+  --secondary-foreground: 257 37% 96%;
+  --muted: 258 27% 10%;
+  --muted-foreground: 252 17% 73%;
   --accent: 17 87% 62%;
   --accent-foreground: 0 0% 100%;
+  --destructive: 358 75% 59%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 261 18% 18%;
+  --input: 261 18% 18%;
+  --ring: 248 60% 60%;
+  --chart-1: 248 60% 60%;
+  --chart-2: 201 79% 56%;
+  --chart-3: 17 87% 62%;
+  --chart-4: 156 69% 39%;
+  --chart-5: 252 66% 85%;
+  --switch-unchecked: 254 11% 52%;
+}
+
+/* ------------------------------------------------------------
+   Gizmo mode inherits a separate token block in the original CSS.
+   Re-map it as well so embedded/gizmo surfaces do not revert.
+   ------------------------------------------------------------ */
+.gizmo {
+  --text-primary: var(--iaobm-light-text-primary);
+  --text-secondary: var(--iaobm-light-text-secondary);
+  --text-tertiary: var(--iaobm-light-text-muted);
+  --surface-primary: var(--iaobm-light-surface-raised);
+  --surface-secondary: var(--iaobm-light-surface);
+  --surface-tertiary: var(--iaobm-light-row-hover);
+  --border-light: rgba(71, 50, 194, 0.12);
+  --border-medium: rgba(71, 50, 194, 0.18);
+  --border-heavy: rgba(71, 50, 194, 0.28);
+  --border-xheavy: rgba(71, 50, 194, 0.36);
+}
+
+.gizmo.dark,
+.dark .gizmo {
+  --text-primary: var(--iaobm-dark-text-primary);
+  --text-secondary: var(--iaobm-dark-text-secondary);
+  --text-tertiary: var(--iaobm-dark-text-muted);
+  --surface-primary: var(--iaobm-dark-bg);
+  --surface-secondary: var(--iaobm-dark-surface);
+  --surface-tertiary: var(--iaobm-dark-row-selected);
+  --border-light: rgba(201, 191, 242, 0.12);
+  --border-medium: rgba(201, 191, 242, 0.18);
+  --border-heavy: rgba(201, 191, 242, 0.28);
+  --border-xheavy: rgba(201, 191, 242, 0.36);
+}
+
+/* ------------------------------------------------------------
+   Global surfaces, links and utility colour classes.
+   ------------------------------------------------------------ */
+body,
+html {
+  background-color: var(--iaobm-bg);
+  color: var(--text-primary);
+}
+
+html.dark,
+.dark body,
+.dark html {
+  --tw-bg-opacity: 1;
+  background-color: var(--iaobm-bg);
+  color: var(--text-primary);
+}
+
+a,
+.link,
+.markdown a,
+.prose :where(a):not(:where([class~='not-prose'] *)) {
+  color: var(--iaobm-link);
+}
+
+a:hover,
+.link:hover,
+.markdown a:hover,
+.prose :where(a):not(:where([class~='not-prose'] *)):hover {
+  color: var(--iaobm-link-hover);
+}
+
+.text-token-text-primary {
+  color: var(--text-primary);
+}
+
+.text-token-text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-token-text-tertiary {
+  color: var(--text-tertiary);
+}
+
+.border-token-border-heavy {
+  border-color: var(--border-heavy);
+}
+
+.border-token-border-light {
+  border-color: var(--border-light);
+}
+
+.border-token-border-medium {
+  border-color: var(--border-medium);
+}
+
+.bg-token-surface-secondary {
+  background-color: var(--surface-secondary);
+}
+
+.from-token-surface-secondary {
+  --tw-gradient-from: var(--surface-secondary) var(--tw-gradient-from-position);
+  --tw-gradient-to: transparent var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+/* ------------------------------------------------------------
+   Buttons from style.css that had hard-coded green/teal colours.
+   ------------------------------------------------------------ */
+.btn-primary {
+  --tw-bg-opacity: 1;
+  --tw-text-opacity: 1;
+  background-color: var(--iaobm-primary);
+  border-color: transparent;
+  color: var(--iaobm-on-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--iaobm-primary-hover);
+}
+
+.btn-primary:active {
+  background-color: var(--iaobm-primary-active);
+}
+
+.btn-primary.focus-visible,
+.btn-primary:focus-visible {
+  --tw-ring-color: transparent;
+  box-shadow: var(--iaobm-focus-ring);
+  outline: none;
+}
+
+.btn-primary:disabled,
+.btn-primary:disabled:hover {
+  background-color: var(--iaobm-primary-disabled);
+  color: var(--iaobm-on-primary);
+}
+
+.btn-secondary {
+  --tw-border-opacity: 1;
+  --tw-bg-opacity: 1;
+  --tw-text-opacity: 1;
+  background-color: var(--iaobm-accent);
+  border-color: transparent;
+  color: var(--iaobm-on-primary);
+}
+
+.btn-secondary:hover,
+.dark .btn-secondary:hover {
+  background-color: var(--iaobm-accent-hover);
+  border-color: var(--iaobm-accent-hover);
+  color: var(--iaobm-on-primary);
+}
+
+.btn-secondary:active,
+.dark .btn-secondary:active {
+  background-color: var(--iaobm-accent-active);
+  border-color: var(--iaobm-accent-active);
+  color: var(--iaobm-on-primary);
+}
+
+.btn-neutral {
+  background-color: var(--surface-secondary);
+  border-color: var(--border-light);
+  color: var(--text-primary);
+}
+
+.btn-neutral:hover,
+.dark .btn-neutral:hover {
+  background-color: var(--surface-hover);
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+}
+
+.dark .btn-neutral {
+  background-color: var(--surface-secondary);
+  border-color: var(--border-light);
+  color: var(--text-primary);
+}
+
+.btn-neutral:focus,
+.dark .btn-neutral:focus {
+  box-shadow: 0 0 0 2px var(--ring-primary);
+  outline: none;
+}
+
+/* ------------------------------------------------------------
+   Tabs/agent mode colourways from style.css.
+   ------------------------------------------------------------ */
+.creative-tab {
+  background: linear-gradient(90deg, var(--purple-300) 10.79%, var(--purple-500) 87.08%);
+}
+
+.fast-tab {
+  background: linear-gradient(90deg, var(--blue-400) 10.79%, var(--blue-600) 87.08%);
+}
+
+.balanced-tab {
+  background: linear-gradient(90deg, var(--orange-400) 10.79%, var(--orange-600) 87.08%);
+}
+
+.precise-tab {
+  background: linear-gradient(90deg, var(--blue-500) 10.79%, var(--purple-600) 87.08%);
+}
+
+/* ------------------------------------------------------------
+   Scrollbars, floating buttons and hover gradients.
+   ------------------------------------------------------------ */
+.premium-scroll-button {
+  background-color: var(--surface-dialog);
+  border-color: var(--border-light);
+  box-shadow: 0 1px 3px rgba(71, 50, 194, 0.14);
+  color: var(--text-primary);
+}
+
+.dark .premium-scroll-button {
+  background-color: var(--surface-dialog);
+  border-color: var(--border-light);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  color: var(--text-primary);
+}
+
+::-webkit-scrollbar-thumb,
+.markdown-table-wrapper::-webkit-scrollbar-thumb,
+.scrollbar-hover:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(71, 50, 194, 0.18);
+}
+
+::-webkit-scrollbar-thumb:hover,
+.markdown-table-wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: var(--border-heavy);
+}
+
+.dark ::-webkit-scrollbar-thumb,
+.dark .markdown-table-wrapper::-webkit-scrollbar-thumb,
+.dark .scrollbar-hover:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(201, 191, 242, 0.22);
+}
+
+.group:hover .group-hover\:from-\[\#2A2B32\] {
+  --tw-gradient-from: var(--surface-secondary) var(--tw-gradient-from-position);
+  --tw-gradient-to: transparent var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.group:hover .group-hover\:text-gray-500,
+.group:hover .group-hover\:text-gray-700 {
+  color: var(--text-secondary);
+}
+
+/* ------------------------------------------------------------
+   Forms/selects from style.css.
+   ------------------------------------------------------------ */
+select,
+.form-input,
+.form-multiselect,
+.form-select,
+.form-textarea {
+  background-color: var(--surface-primary);
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+}
+
+select {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%235A5470' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+}
+
+.dark select {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23B3AEC6' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+}
+
+.form-input:focus,
+.form-multiselect:focus,
+.form-select:focus,
+.form-textarea:focus {
+  --tw-ring-color: var(--iaobm-primary);
+  border-color: var(--iaobm-primary);
+  box-shadow: var(--iaobm-focus-ring);
+  outline: none;
+}
+
+.form-input::-webkit-input-placeholder,
+.form-textarea::-webkit-input-placeholder,
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* ------------------------------------------------------------
+   Markdown/prose surfaces and code highlighting.
+   ------------------------------------------------------------ */
+.prose {
+  --tw-prose-body: var(--text-secondary);
+  --tw-prose-headings: var(--text-primary);
+  --tw-prose-lead: var(--text-secondary);
+  --tw-prose-links: var(--iaobm-link);
+  --tw-prose-bold: var(--text-primary);
+  --tw-prose-counters: var(--text-tertiary);
+  --tw-prose-bullets: var(--border-medium);
+  --tw-prose-hr: var(--border-light);
+  --tw-prose-quotes: var(--text-primary);
+  --tw-prose-quote-borders: var(--border-medium);
+  --tw-prose-captions: var(--text-tertiary);
+  --tw-prose-code: var(--text-primary);
+  --tw-prose-pre-code: var(--text-primary);
+  --tw-prose-pre-bg: var(--surface-secondary);
+  --tw-prose-th-borders: var(--border-medium);
+  --tw-prose-td-borders: var(--border-light);
+  --tw-prose-invert-body: var(--iaobm-dark-text-secondary);
+  --tw-prose-invert-headings: var(--iaobm-dark-text-primary);
+  --tw-prose-invert-lead: var(--iaobm-dark-text-secondary);
+  --tw-prose-invert-links: var(--iaobm-dark-link);
+  --tw-prose-invert-bold: var(--iaobm-dark-text-primary);
+  --tw-prose-invert-counters: var(--iaobm-dark-text-muted);
+  --tw-prose-invert-bullets: var(--iaobm-dark-primary-disabled);
+  --tw-prose-invert-hr: var(--iaobm-dark-border);
+  --tw-prose-invert-quotes: var(--iaobm-dark-text-primary);
+  --tw-prose-invert-quote-borders: var(--iaobm-dark-primary-disabled);
+  --tw-prose-invert-captions: var(--iaobm-dark-text-muted);
+  --tw-prose-invert-code: var(--iaobm-dark-text-primary);
+  --tw-prose-invert-pre-code: var(--iaobm-dark-text-primary);
+  --tw-prose-invert-pre-bg: var(--iaobm-dark-surface-raised);
+  --tw-prose-invert-th-borders: var(--iaobm-dark-primary-disabled);
+  --tw-prose-invert-td-borders: var(--iaobm-dark-border);
+}
+
+.prose :where(code):not(:where([class~='not-prose'] *)) {
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+}
+
+.dark .prose :where(code):not(:where([class~='not-prose'] *)):not(:where(pre *)) {
+  background-color: var(--surface-tertiary);
+}
+
+code.hljs,
+code[class*='language-'],
+pre[class*='language-'] {
+  color: var(--text-primary);
+}
+
+.dark code.hljs,
+.dark code[class*='language-'],
+.dark pre[class*='language-'] {
+  color: var(--text-primary);
+}
+
+.hljs-comment,
+.dark .hljs-comment {
+  color: var(--text-tertiary);
+}
+
+.hljs-meta,
+.dark .hljs-meta {
+  color: var(--text-secondary);
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title,
+.dark .hljs-built_in,
+.dark .hljs-class .hljs-title {
+  color: var(--iaobm-accent);
+}
+
+.hljs-doctag,
+.hljs-formula,
+.hljs-keyword,
+.hljs-literal,
+.dark .hljs-doctag,
+.dark .hljs-formula,
+.dark .hljs-keyword,
+.dark .hljs-literal {
+  color: var(--iaobm-link);
+}
+
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta-string,
+.hljs-regexp,
+.hljs-string,
+.dark .hljs-addition,
+.dark .hljs-attribute,
+.dark .hljs-meta-string,
+.dark .hljs-regexp,
+.dark .hljs-string {
+  color: var(--iaobm-success);
+}
+
+.hljs-attr,
+.hljs-number,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-pseudo,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable,
+.dark .hljs-attr,
+.dark .hljs-number,
+.dark .hljs-selector-attr,
+.dark .hljs-selector-class,
+.dark .hljs-selector-pseudo,
+.dark .hljs-template-variable,
+.dark .hljs-type,
+.dark .hljs-variable {
+  color: var(--iaobm-accent-hover);
+}
+
+.hljs-bullet,
+.hljs-link,
+.hljs-selector-id,
+.hljs-symbol,
+.hljs-title,
+.dark .hljs-bullet,
+.dark .hljs-link,
+.dark .hljs-selector-id,
+.dark .hljs-symbol,
+.dark .hljs-title {
+  color: var(--iaobm-danger);
+}
+
+.markdown blockquote {
+  border-color: var(--border-medium);
+}
+
+.dark .markdown blockquote {
+  border-color: var(--border-medium);
+}
+
+.markdown table {
+  border-color: var(--border-medium);
+}
+
+.markdown th {
+  background-color: var(--surface-secondary);
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+}
+
+.dark .markdown th {
+  background-color: var(--surface-tertiary);
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+}
+
+.markdown td,
+.markdown td:last-child {
+  border-color: var(--border-light);
+}
+
+.dark .markdown td,
+.dark .markdown td:last-child {
+  border-color: var(--border-light);
+}
+
+/* ------------------------------------------------------------
+   Optional utility classes matching the IAOBM token names from
+   the source theme. These only matter if custom markup uses them.
+   ------------------------------------------------------------ */
+.btn-iaobm-primary {
+  background: var(--iaobm-primary);
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--iaobm-on-primary);
+  cursor: pointer;
+  padding: 0.5rem 0.875rem;
+  transition: background 120ms ease;
+}
+
+.btn-iaobm-primary:hover {
+  background: var(--iaobm-primary-hover);
+}
+
+.btn-iaobm-primary:active {
+  background: var(--iaobm-primary-active);
+}
+
+.btn-iaobm-primary:focus-visible {
+  box-shadow: var(--iaobm-focus-ring);
+  outline: none;
+}
+
+.btn-iaobm-primary:disabled {
+  background: var(--iaobm-primary-disabled);
+  cursor: default;
+}
+
+.list-item:hover {
+  background: var(--iaobm-row-hover);
+}
+
+.list-item.is-selected {
+  background: var(--iaobm-row-selected);
+  color: var(--iaobm-row-selected-text);
 }
