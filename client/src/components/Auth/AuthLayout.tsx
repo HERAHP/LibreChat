@@ -60,12 +60,13 @@ function AuthLayout({
     <div className="relative flex min-h-screen flex-col bg-white dark:bg-gray-900">
       <Banner />
       <BlinkAnimation active={isFetching}>
-        <div className="mt-6 h-10 w-full bg-cover">
-          <img
-            src="assets/logo.png"
-            className="h-full w-full object-contain"
-            alt={localize('com_ui_logo', { 0: startupConfig?.appTitle ?? 'LibreChat' })}
-          />
+        <div className="mt-6 h-10 w-full bg-cover" style="width: 50%; object-fit: cover; height: auto; margin-left: 25%;">
+	  <picture>
+            <!-- Image to display when Dark Mode is active -->
+            <source srcset="assets/logo-dark.png" media="(prefers-color-scheme: dark)" className="h-full w-full pbject=contain" alt={localize('com_ui_logo', { 0: startupConfig?.appTitle ?? 'LibreChat' })}>
+            <!-- Fallback image for Light Mode / default -->
+            <img src="assets/logo.png" className="h-full w-full pbject=contain" alt={localize('com_ui_logo', { 0: startupConfig?.appTitle ?? 'LibreChat' })}>
+          </picture>
         </div>
       </BlinkAnimation>
       <DisplayError />
