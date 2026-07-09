@@ -909,3 +909,69 @@ pre[class*='language-'] {
   background: var(--iaobm-row-selected);
   color: var(--iaobm-row-selected-text);
 }
+
+/* ------------------------------------------------------------
+   Message bubbles — styled against confirmed DOM from
+   MessageRender.tsx, MessageContent.tsx, MessageEndpointIcon.tsx.
+
+   Structure:
+     .message-render (flex row)
+       > avatar column (sibling div, present for both roles)
+       > .user-turn / .agent-turn
+           > h2 (name + time)
+           > .text-message > .message-content
+   ------------------------------------------------------------ */
+
+/* ---- User turns ---- */
+
+/* Right-align user message content in the message-render flex row. */
+.message-render:has(> .user-turn) {
+  justify-content: flex-end;
+}
+
+/* Hide the avatar column for user turns. The avatar is a sibling,
+   not a descendant, so :has() is required to reach it. */
+.message-render:has(> .user-turn) > .relative.flex-shrink-0 {
+  display: none;
+}
+
+/* Hide the name/timestamp row on user turns. */
+.user-turn h2 {
+  display: none;
+}
+
+/* User message bubble: purple pill, right-aligned. */
+.user-turn .message-content {
+  background-color: var(--iaobm-bubble-user-bg);
+  color: var(--iaobm-bubble-user-text);
+  border-radius: 18px;
+  padding: 0.6rem 1rem;
+  display: inline-block;
+  max-width: 75%;
+  box-sizing: border-box;
+}
+
+/* ---- Agent turns ---- */
+
+/* Agent name label: purple, compact, no timestamp. */
+.agent-turn h2 {
+  color: var(--iaobm-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.agent-turn h2 time {
+  display: none;
+}
+
+/* Agent avatar: override the inline `background: transparent` and
+   the Tailwind `text-gray-400` on the fallback Feather icon.
+   The inline style on MessageEndpointIcon.tsx:189 sets
+   `background: transparent`, so !important is required. */
+div[title="agents"] {
+  background-color: var(--iaobm-primary) !important;
+}
+
+div[title="agents"] svg.lucide-feather {
+  color: #ffffff !important;
+}
