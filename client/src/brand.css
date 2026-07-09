@@ -981,6 +981,11 @@ pre[class*='language-'] {
   display: none;
 }
 
+.agent-turn h2:hover time {
+  display: inline-block;
+  opacity: 0.7;
+}
+
 /* Agent avatar: override the inline `background: transparent` and
    the Tailwind `text-gray-400` on the fallback Feather icon.
    The inline style on MessageEndpointIcon.tsx:189 sets
