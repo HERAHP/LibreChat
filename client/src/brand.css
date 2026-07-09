@@ -946,13 +946,19 @@ pre[class*='language-'] {
   display: none;
 }
 
-/* User message bubble: purple pill, right-aligned, up to 85% width. */
+/* Push user message bubble to the right side of the conversation pane. */
+.user-turn .text-message {
+  align-items: flex-end;
+}
+
+/* User message bubble: auto-size to content, anchored right, up to 85% cap. */
 .user-turn .message-content {
   background-color: var(--iaobm-bubble-user-bg);
   color: var(--iaobm-bubble-user-text);
   border-radius: 18px;
   padding: 0.6rem 1rem;
   display: inline-block;
+  width: auto;
   max-width: 85%;
   box-sizing: border-box;
 }
