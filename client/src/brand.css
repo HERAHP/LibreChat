@@ -927,6 +927,12 @@ pre[class*='language-'] {
 /* Right-align user message content in the message-render flex row. */
 .message-render:has(> .user-turn) {
   justify-content: flex-end;
+  text-align: right;
+}
+
+/* Override w-11/12 so user turn stretches full width for right alignment. */
+.message-render:has(> .user-turn) > .user-turn {
+  width: 100%;
 }
 
 /* Hide the avatar column for user turns. The avatar is a sibling,
@@ -940,15 +946,20 @@ pre[class*='language-'] {
   display: none;
 }
 
-/* User message bubble: purple pill, right-aligned. */
+/* User message bubble: purple pill, right-aligned, up to 85% width. */
 .user-turn .message-content {
   background-color: var(--iaobm-bubble-user-bg);
   color: var(--iaobm-bubble-user-text);
   border-radius: 18px;
   padding: 0.6rem 1rem;
   display: inline-block;
-  max-width: 75%;
+  max-width: 85%;
   box-sizing: border-box;
+}
+
+/* Agent message: left-aligned, up to 85% width. */
+.agent-turn .message-content {
+  max-width: 85%;
 }
 
 /* ---- Agent turns ---- */
